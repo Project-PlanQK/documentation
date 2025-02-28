@@ -14,7 +14,7 @@
   5. Chatbot with Azure
 
 ## File: 10.12.2024 - Chatbot Status Meeting_final.pdf
-  Conent:
+  Content:
   1. Detailed Code Comparison of LlamaIndex & LangChain + Reason of Choice
   2. Design of own RAG Architecture
   3. Demo
