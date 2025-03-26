@@ -1,5 +1,11 @@
 # documentation
 
+## File: 11.03.2025-Jahres-Zwischenstandspräsentation.pptx
+  Content:
+  1. Project profile incl. customer journey of chatbot interaction
+  2. RAG explained
+  3. Outlook of project
+
 ## File: 06.02.2025_DBE_Projekt1-PlanQK AI Chatbot.pptx
   Content:
   1. Prompting Techniques
