@@ -11,7 +11,7 @@
   1. Prompting Techniques
   2. User Stories / Personas
 
-## File: 13.01.2025 - Zwischenstandspräsentation_final.pdf
+## File: 13.01.2025 - Zwischenstandspräsentation_final.pptx
   Content:
   1. Options on UI/UX
   2. Modes of interaction & Outputformatting
