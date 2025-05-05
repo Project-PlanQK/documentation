@@ -1,5 +1,11 @@
 # documentation
 
+## File: 28.04.2025-Meilensteinpräsentation.pptx
+  Content:
+  1. Presentation of the results of the first interview conducted.
+  2. Presentation of the MVP, embedded in the PlanQK platform.
+  3. Outlook: Iteration of the MVP development
+
 ## File: 11.03.2025-Jahres-Zwischenstandspräsentation.pptx
   Content:
   1. Project profile incl. customer journey of chatbot interaction
