@@ -1,5 +1,11 @@
 # documentation
 
+## File: 20.05.2025-Meilensteinpräsentation.pptx
+Content:
+1. Presentation of the first implementation loop of the validated features of the MVP.
+2. Live Demo.
+3. Outlook: Next steps in the further development and optimization of the MVP.
+
 ## File: 28.04.2025-Meilensteinpräsentation.pptx
   Content:
   1. Presentation of the results of the first interview conducted.
