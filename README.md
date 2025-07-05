@@ -1,15 +1,22 @@
 # documentation
 
+## File: 16.06.2025 - Meilensteinpräsentation.pptx
+Content:
+1. Presentation of working insights (system prompt, evaluationmethod, tracing, answer quality)
+2. Live Demo
+3. Outlook: Next steps in the further development and optimization of the MVP
+
+
 ## File: 20.05.2025-Meilensteinpräsentation.pptx
 Content:
-1. Presentation of the first implementation loop of the validated features of the MVP.
-2. Live Demo.
-3. Outlook: Next steps in the further development and optimization of the MVP.
+1. Presentation of the first implementation loop of the validated features of the MVP
+2. Live Demo
+3. Outlook: Next steps in the further development and optimization of the MVP
 
 ## File: 28.04.2025-Meilensteinpräsentation.pptx
   Content:
-  1. Presentation of the results of the first interview conducted.
-  2. Presentation of the MVP, embedded in the PlanQK platform.
+  1. Presentation of the results of the first interview conducted
+  2. Presentation of the MVP, embedded in the PlanQK platform
   3. Outlook: Iteration of the MVP development
 
 ## File: 11.03.2025-Jahres-Zwischenstandspräsentation.pptx
