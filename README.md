@@ -1,5 +1,12 @@
 # documentation
 
+## File: 21.07.2025 - Meilensteinpräsentation.pptx
+Content:
+1. Tracing
+2. Optimization of system prompt
+3. Evalation
+4. Outlook
+
 ## File: 16.06.2025 - Meilensteinpräsentation.pptx
 Content:
 1. Presentation of working insights (system prompt, evaluationmethod, tracing, answer quality)
