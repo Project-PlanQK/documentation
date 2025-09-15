@@ -1,0 +1,346 @@
+﻿index;question;response;reference_answer;correctness_score;relevance_score;faithfulness_score;overall_average_score
+1;"I am a tech lead at Lufhansa consulting. ​
+We are looking for a way to efficiently solving​
+the challenges in providing sufficient airspace capacity to avoid airspace congestion. ";"Thank you for sharing your objective regarding airspace capacity optimization. PlanQK provides managed quantum services that can help address complex optimization challenges like airspace congestion by leveraging quantum computing solutions. You can focus on developing your quantum algorithms in Python (or other supported languages) and deploy them as managed services without managing infrastructure or server upgrades. PlanQK automates the containerization and deployment process, making your solutions accessible via standard HTTP APIs, and enabling asynchronous execution and result retrieval for long-running optimization tasks [doc1][doc2][doc4][doc6].
+
+To get started, you may:
+- Use the PlanQK CLI or the platform UI to create and deploy a managed quantum service for your optimization problem.
+- Select or customize starter templates to rapidly prototype your solution.
+- Integrate with quantum backends (such as Qiskit or AWS Braket) using the PlanQK Quantum SDK, which allows you to run and monitor quantum jobs programmatically [doc3][doc10].
+- Share your deployed services securely with colleagues or external partners and orchestrate workflows using the platform’s workflow editor.
+
+Could you provide more detail on your data structure, current workflow, or readiness to prototype? This will help in recommending the most suitable backend or template for your use case.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";"The problem of ATFM is described in the ATFM Use Case on PlanQK. Here are the key concepts …, also here is a link to the use case. Using  Kipu’s digitized counterdiabatic quantum optimization (DCQO) algorithms we are  able to solve larger problem than possible.​
+The service is accessible on our Marketplace. ​";4.0;1.0;1.0;2.0
+2;How can I run my existing Qiskit code on PlanQK's quantum backends?;"You can run your existing Qiskit code on PlanQK's quantum backends using the PLANQK Quantum SDK, which acts as a wrapper for Qiskit and maintains the same functionality and syntax as the original Qiskit SDK[doc1]. To get started:
+
+1. Install the PLANQK Quantum SDK using Python 3.11 or higher:
+   ```
+   pip install planqk-quantum
+   ```
+2. Obtain a valid PLANQK access token from your user settings on the platform. This token is used for authentication and tracking usage costs[doc1].
+3. In your Qiskit code, import PlanqkQuantumProvider and pass your access token:
+   ```python
+   from planqk.qiskit import PlanqkQuantumProvider
+   planqk_token = ""YOUR_ACCESS_TOKEN""
+   provider = PlanqkQuantumProvider(access_token=planqk_token)
+   ```
+   Note: If running within a PLANQK service, the access token is set automatically by the platform[doc1].
+
+4. List and select the desired backend:
+   ```python
+   backends = provider.backends()
+   backend = provider.get_backend(""azure.ionq.simulator"")  # example backend
+   ```
+
+5. Create and transpile your Qiskit circuit, then execute it:
+   ```python
+   from qiskit import QuantumCircuit, transpile
+   circuit = QuantumCircuit(3, 3)
+   circuit.h(0)
+   circuit.cx(0, 1)
+   circuit.cx(1, 2)
+   circuit.measure(range(3), range(3))
+   circuit = transpile(circuit, backend)
+   job = backend.run(circuit, shots=1000)
+   ```
+
+You can use the SDK either from your IDE or inside a PLANQK service. Executing code on the platform may incur costs depending on the backend and number of shots; refer to PlanQK's pricing page for details[doc2].
+
+Is there anything else I can help you with on PlanQK?  
+Identified persona: Technical";Use the PlanqkQuantumProviderfrom the PlanQK Quantum SDK to run your Qiskit code on supported quantum backends.;5.0;1.0;1.0;2.3333333333333335
+3;How do I authenticate with the PlanQK SDK to run quantum programs?;"To authenticate with the PlanQK Quantum SDK, you need a valid PlanQK account and a quantum access token. This token is required to authorize your requests to the PlanQK platform and track your usage costs. You can obtain your personal access token by logging into PlanQK and copying it from the welcome page, or you may generate dedicated access tokens in your user settings. Once you have your token, you pass it to the PlanqkQuantumProvider object in your code. If your code is executed within a PlanQK service, the platform automatically sets the access token, so you do not need to provide it manually. If you do provide it, it will be replaced by the service token [doc4].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";You can authenticate via CLI with planqk login -t <your token> or provide the access token directly when instantiating the provider in code.;4.0;1.0;1.0;2.0
+4;How do I use the PlanQK CLI to manage my implementations?;"To manage your implementations with the PlanQK CLI, follow these steps:
+
+1. Install Node.js (version 18 or higher) and npm. Then, install the PlanQK CLI using:
+   ```bash
+   npm install -g @planqk/planqk-cli
+   ```
+2. Log in to your PlanQK account using your personal access token.
+3. Use the CLI commands to create and manage your implementations. For example, you can create a new implementation by visiting the ""Create Implementation"" page, entering a name, and clicking ""Create."" After creation, you will be able to manage the implementation using CLI commands. Refer to the CLI Reference for detailed command usage and options.
+
+The CLI helps you automate deployment, run quantum jobs, manage configurations, and integrate with CI/CD pipelines for continuous updates to your services on PlanQK [doc1], [doc5].
+
+Is there anything else I can help you with on PlanQK?
+
+Identified persona: Technical";Install the CLI via npm install -g @planqk/planqk-cli and use commands like planqk init, planqk up, and planqk run to manage implementations.;4.0;1.0;1.0;2.0
+5;How do I create a personal access token for authentication on PlanQK?;"To create a personal access token for authentication on PlanQK, follow these steps:
+
+- Go to the user-menu in the top right corner of the PlanQK platform and click on ""Settings.""
+- Under the ""Personal Access Tokens"" section, you can create new personal access tokens and manage existing ones.
+- Once created, you can use your personal access token to access the PlanQK API via the CLI, Quantum SDK, or to authenticate custom applications that interact with the PlanQK Platform API.
+- Note that personal access tokens can only be created for user accounts, but you can use your token to interact with organizations you are a member of [doc3].
+
+Is there anything else I can help you with on PlanQK?
+
+Identified persona: Technical";Go to your user settings and create a new token under “Personal Access Tokens.”;5.0;1.0;1.0;2.3333333333333335
+6;How do I get started creating my first implementation on PlanQK?;"To get started with creating your first implementation on PlanQK, follow these steps:
+
+1. Ensure you have Git installed on your machine, as you’ll need it for version control and repository management [doc2].
+2. Visit the Create Implementation page on PlanQK, enter a name for your implementation, and click the ""Create"" button [doc2][doc4].
+3. After creation, the implementation page will provide command line instructions for cloning your repository. Use these instructions to clone the repository to your local machine [doc4].
+4. Authentication for cloning uses your personal access token in the Git URL. You can clone any repository for which you have at least 'Viewer' permissions [doc4].
+5. Add a README file to your repository with relevant information about your implementation. You can create this file and push changes using Git commands [doc4].
+
+If you want to make your implementation public or manage permissions, refer to the settings section on the implementation page [doc4].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Create an implementation via the platform, clone the repo locally, and add your files.;5.0;1.0;1.0;2.3333333333333335
+7;How do I add other users to my implementation?;"To add other users to your implementation on PlanQK, you need to assign them as members within the implementation settings. Members can be given different roles: Viewer (can see the implementation and its code), Maintainer (can see and make changes to the code), or Owner (can manage settings, add users, change visibility, and delete the implementation). You can manage these roles and add users by navigating to your implementation's settings page and updating the members list there. This allows you to control who has access and what level of permissions they have on your implementation [doc1][doc3].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";In your implementation settings, you can assign roles like Viewer, Maintainer, or Owner.;5.0;1.0;1.0;2.3333333333333335
+8;How can I quickly get started with developing and running a quantum program on PlanQK?;"To quickly get started with developing and running a quantum program on PlanQK, you should follow these steps:
+
+1. Install the PLANQK Quantum SDK:
+   - Make sure you have Python 3.11 or higher.
+   - Install the SDK using pip:
+     ```
+     pip install planqk-quantum
+     ```
+2. Obtain a PLANQK Access Token:
+   - Log in to your PLANQK account and copy your personal access token.
+   - You may optionally create a dedicated access token in your user settings for quantum code usage.
+
+3. Write and Run Your Quantum Program:
+   - Use the PlanqkQuantumProvider to access quantum backends:
+     ```python
+     from planqk.qiskit import PlanqkQuantumProvider
+     planqk_token = ""YOUR_ACCESS_TOKEN""
+     provider = PlanqkQuantumProvider(access_token=planqk_token)
+     backends = provider.backends()
+     backend = provider.get_backend(""azure.ionq.simulator"")
+     ```
+   - Create and execute your Qiskit circuit:
+     ```python
+     from qiskit import QuantumCircuit, transpile
+     circuit = QuantumCircuit(3, 3)
+     circuit.h(0)
+     circuit.cx(0, 1)
+     circuit.cx(1, 2)
+     circuit.measure(range(3), range(3))
+     circuit = transpile(circuit, backend)
+     job = backend.run(circuit, shots=1000)
+     ```
+
+4. Monitor and Retrieve Results:
+   - You can monitor the status and retrieve results using the job object.
+
+5. Alternative: Use the PLANQK CLI for Service Projects:
+   - Initialize a Docker Python starter project with:
+     ```
+     planqk init
+     ```
+   - Choose a name, select the Docker Starter template, and set resource configurations.
+   - Upload your implementation, and create a managed service on PLANQK.
+
+6. Execute Your Service:
+   - Run your service with example input data using:
+     ```
+     planqk run
+     ```
+   - You will receive a job result and can view it on the platform.
+
+These steps allow you to quickly develop, deploy, and execute quantum programs or services using PLANQK’s SDK or CLI tools [doc7], [doc6], [doc10], [doc9].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Follow the quickstart guide to install the CLI and SDK and run your first quantum program.;5.0;1.0;1.0;2.3333333333333335
+9;Is there a simple example to test PlanQK’s functionality?;"Yes, PlanQK provides a straightforward example to help users test its functionality. You can create a new project using the PLANQK CLI with the command planqk init, and select the Python Starter template during setup. This creates a directory with all required files to run a basic quantum service, such as a quantum coin toss example. The template includes a README.md with further instructions, and you can test the service locally by installing dependencies from requirements.txt and running the code in the src/program.py file. This setup allows you to quickly validate PlanQK’s capabilities before moving on to more advanced features [doc4].
+
+Is there anything else I can help you with on PlanQK?
+
+Identified persona: Technical";Yes, the coin toss example shows how to build and run a basic quantum program.;5.0;1.0;1.0;2.3333333333333335
+10;Are there templates to help me create a new service?;"Yes, PlanQK provides starter templates to help you quickly create new services. When you use the PLANQK CLI and run planqk init, you'll be prompted to select a starter template. For example, you can choose the Docker Python Starter template to set up a service based on custom Docker containers. A full list of available templates is maintained in the GitLab repository, and you can consult the README file in the generated project for further details on each template's usage and structure [doc1].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Yes, the PlanQK CLI provides starter templates like the Docker-Python starter template.;5.0;1.0;1.0;2.3333333333333335
+11;Can I reuse previously developed services for similar use cases?;"Yes, you can reuse previously developed services for similar use cases on PlanQK. The platform supports Service Orchestration, which allows you to build larger services from existing ones by setting up workflows where you call services in a defined order and use their results as input for subsequent service calls. This orchestration is based on BPMN workflows and can be deployed and executed on a workflow engine, typically without needing to write code [doc1].
+
+Additionally, when documenting a new use case, you can link related algorithms, implementations, data pools, and quantum apps, which facilitates the reuse and reference of existing services and methods for similar or related problems [doc2][doc6].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Yes, services can be stored, managed, and reused via the platform.;5.0;1.0;1.0;2.3333333333333335
+12;How can I check whether my model processes the provided data correctly?;"To verify that your model is processing the provided data correctly on PlanQK, you should examine the output returned by your service's run() method. The PlanQK runtime passes the input data (in JSON format) and parameters to your model's run() method, either as dictionaries or Pydantic models. After execution, the run() method should return a JSON-serializable object—typically a dictionary or Pydantic model—which represents your model's result. This output is then accessible via the GET /{id}/result endpoint of the Service API, allowing you to inspect the returned data and confirm that your model has processed the input as expected. For example, if your run() method returns {""sum"": 6}, you can retrieve and review this result using the result endpoint to validate correctness. Additionally, you may want to check any files written to /var/runtime/output, as these are treated as output of the service and can provide further verification of the processing steps performed by your model [doc1].
+
+Is there anything else I can help you with on PlanQK?
+
+Identified persona: Technical";Use job monitoring features to inspect logs and outputs to validate correct data usage.;3.0;1.0;1.0;1.6666666666666667
+13;Can I test a service without having programming knowledge?;"Yes, you can test a service on PlanQK even without programming knowledge. For services built with custom Docker containers, the platform provides an input folder where you can place input data and parameters for local testing. You only need to provide input files in the expected JSON format, such as data.json, according to the service's requirements. The platform handles running the service and makes the output available in an output directory after execution. This allows you to test and validate the service using prepared files and simple commands, without the need to write code yourself [doc2][doc4].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Yes, services can be executed and managed via the UI without writing code.;4.0;1.0;1.0;2.0
+14;What permissions do team members have based on their role in an organization?;"Team members in a PlanQK organization can be assigned one of several roles, each granting different permissions:
+
+- Viewer: Can see the content of the organization, but cannot edit or create content.
+- Maintainer: Can create new content, edit existing content, but cannot delete content.
+- Owner: Has full control—can create, edit, and delete all content within the organization. Owners can also add new members, assign roles, and remove members. Owners have access to the entire organization profile and can edit it.
+
+When a member is added, they receive an email invitation to confirm before accessing the organization in their account context. The organization context must be selected before creating new content, as it cannot be changed afterward [doc3].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";"Roles like ""Owner"", ""Maintainer"", and ""Viewer"" grant different levels of access and editing rights.";5.0;1.0;1.0;2.3333333333333335
+15;How can I limit resource usage during service setup to stay within budget?;"To manage and limit resource usage for your service on PlanQK, you need to configure the resources in your planqk.json file during service setup. The planqk.json file includes parameters for the number of virtual CPU cores, the amount of memory in GB, and optional GPU configuration. By specifying lower values for cpu, memory, and gpu fields, you can control your service's resource consumption, helping you stay within your budget. For example:
+
+{
+  ""resources"": {
+    ""cpu"": 2,
+    ""memory"": 4,
+    ""gpu"": {
+      ""type"": ""NVIDIA_TESLA_T4"",
+      ""count"": 1
+    }
+  }
+}
+
+You can adjust these numbers as needed to reduce costs. Ensure that the planqk.json file is located in the root of your project and contains the appropriate resource configuration before deploying your service. This configuration will be applied when the service is executed on the platform and directly affects the cost and usage of your deployment [doc8].
+
+Is there anything else I can help you with on PlanQK?
+
+Identified persona: Technical";Use the planqk.json file to configure CPU, RAM, and GPU specifically to control cost.;5.0;1.0;1.0;2.3333333333333335
+16;Where can I view and interpret the results of my analyses?;"You can view the results of your analyses by visiting the Quantum Jobs page on the PlanQK platform. This page provides a comprehensive overview of all quantum jobs or tasks you have submitted using the PLANQK SDK. After a job has completed, you can download your quantum job inputs and results directly through the UI. If you're part of an organization, you can switch your account context to view jobs submitted by your organization by clicking on your name in the upper right corner of the page. Additionally, you can perform actions such as retrieving inputs and results or canceling queued jobs to manage costs efficiently[source: https://docs.planqk.de/manage-quantum-jobs.html].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Job results can be accessed via the dashboard or API and used for further evaluation.;3.0;1.0;1.0;1.6666666666666667
+17;Is it possible to compare two services in terms of efficiency and runtime?;"The retrieved context does not provide a direct method or built-in feature within PlanQK for comparing two services in terms of efficiency and runtime. However, PlanQK does support service orchestration, allowing you to build workflows that utilize multiple services in sequence and potentially analyze their outputs or execution behavior as part of a larger process. Service orchestration lets you set up workflows (using BPMN and Camunda) to call existing services in a defined order and use results as input for subsequent services, which could be leveraged for comparative analysis if you implement monitoring or result tracking in your workflow logic[doc5].
+
+If you need detailed benchmarks or automated comparison features, could you clarify:
+- Are you looking for built-in analytics, or do you want to implement custom monitoring?
+- What metrics (e.g., execution time, resource usage, cost) are most important for your comparison?
+
+Is there anything else I can help you with on PlanQK?
+
+Identified persona: Technical";PlanQK does not offer direct comparison tools, but job metrics can be manually analyzed.;4.0;1.0;1.0;2.0
+18;Which quantum approach is applied in the air cargo optimization?;"I'm sorry, but the retrieved context does not provide specific details about the quantum approach used in air cargo optimization. Could you specify if you are referring to a particular use case or algorithm listed on PlanQK, or provide more details about the optimization scenario? This will help me assist you more effectively.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";D-Wave's hybrid quantum-classical solvers were applied to the problem.;1.0;1.0;1.0;1.0
+19;What kind of quantum ML model was tested in the fraud use case?;"I'm sorry, but the retrieved context does not specify which quantum ML model was tested in the fraud use case. Could you provide more details or clarify your question? Is there anything else I can help you with on PlanQK?
+
+Identified persona: Business";A variational quantum circuit was used for binary classification.;1.0;1.0;1.0;1.0
+20;Does the quantum-enhanced image model show any measurable improvement?;"I'm sorry, but there is no information in the retrieved context regarding measurable improvements or performance results for a quantum-enhanced image model. Could you specify which image model or use case you are referring to, or provide more details on the type of improvement you are interested in? This will help me assist you more effectively using PlanQK resources.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";The hybrid models demonstrated similar performance with reduced parameters.;2.0;1.0;1.0;1.3333333333333333
+21;How is quantum computing used for cybersecurity anomaly detection?;"The retrieved documents do not provide specific information on how quantum computing is used for cybersecurity anomaly detection. To assist you further, could you clarify if you are interested in available quantum algorithms, existing use cases, or implementations on the PlanQK platform related to cybersecurity or anomaly detection? This will help me guide you to relevant resources or functionalities.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Quantum ML is used to identify outliers in cybersecurity-relevant datasets.;2.0;1.0;1.0;1.3333333333333333
+22;What benefits could this approach bring to a company’s IT security department?;"Utilizing custom Docker containers on the PlanQK platform offers several benefits for a company's IT security department:
+
+- Full control over the base operating system and installed packages, allowing you to include specific OS-level security tools and configurations not available in the default Python template [doc1][doc4].
+- Support for applications written in languages not natively supported by PlanQK, such as Go or Rust, enabling integration of security solutions developed in various environments [doc1][doc4].
+- Guaranteed reproducible builds, ensuring that the deployed environment matches local testing exactly, which is crucial for maintaining consistent security postures and reducing deployment risks [doc1][doc4].
+- Regular updates to coding templates enhance functionality, security, and performance, further supporting secure and up-to-date service deployments [doc1][doc4].
+- Compliance with PlanQK’s runtime interface standards, which helps maintain standardized and auditable service deployments [doc1].
+
+Would you like guidance on setting up a custom container project for security-related services, or do you have a specific use case in mind?
+Is there anything else I can help you with on PlanQK?
+
+Identified persona: Business";Quantum-enhanced anomaly detection enables faster threat response.;2.0;1.0;1.0;1.3333333333333333
+23;What industry applications could benefit from quantum scheduling optimization?;"Quantum scheduling optimization can be applied to various industry sectors where scheduling plays a critical role. Industries such as network design, resource allocation, and scheduling are specifically mentioned as areas that can benefit from quantum optimization techniques. These applications can involve tasks like optimizing resource usage, improving operational efficiency, and handling complex scheduling problems that may be challenging for classical algorithms. Quantum approaches have the potential to provide improved solutions in these domains by leveraging algorithms tailored for scheduling and resource management problems, often resulting in enhanced performance and scalability for real-world industrial challenges [doc2].
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";This use case addresses industrial scheduling challenges.;4.0;1.0;1.0;2.0
+24;How is quantum computing used to model supply chain disruptions?;"I'm sorry, but I couldn't find any information in the retrieved context regarding the use of quantum computing for modeling supply chain disruptions. If you have specific details about a service, algorithm, or use case on PlanQK related to supply chains, please share them so I can assist you further.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Quantum simulations evaluate supply chain resilience under uncertainty.;1.0;1.0;1.0;1.0
+25;How can hospitals benefit from quantum radiotherapy optimization?;"I'm sorry, but I don't have any information on quantum radiotherapy optimization for hospitals in the retrieved PlanQK documentation. Could you clarify if you are looking for specific PlanQK services, use cases, or technical models related to healthcare optimization? Is there anything else I can help you with on PlanQK?
+Identified persona: Business";More accurate planning leads to better outcomes and resource efficiency.;1.0;1.0;1.0;1.0
+26;I manage a battery lab at a car manufacturer. How can quantum ML help classify cell quality more efficiently?;"Quantum machine learning (QML) can enhance the efficiency of cell quality classification in battery labs by leveraging quantum algorithms and hardware to potentially achieve faster and more accurate analysis compared to classical approaches. The PlanQK Platform provides resources for exploring real-world use cases and implementations of quantum computing and machine learning in areas such as quality classification, including access to algorithms, SDKs for quantum programming, and community expertise. You can find implementations for various SDKs, key concepts, and real-world use cases relevant to quantum ML on the platform, and discuss or review content with industry and academic experts to ensure theoretical and technical soundness. This collaborative environment supports the development and deployment of quantum ML solutions tailored to your needs in battery quality classification, helping you stay up to date with the latest advancements in the field [doc1].
+
+Would you like guidance on specific algorithms, SDKs, or setting up a workspace for quantum ML experiments related to battery cell classification? Is there anything else I can help you with on PlanQK?
+
+Identified persona: Business";Quantum classifiers improve prediction of cell performance and lifecycle.;4.0;1.0;1.0;2.0
+27;Which types of input data were used to train the quantum model in this battery case?;"I'm sorry, but there is no information in the retrieved context regarding the types of input data used to train a quantum model in a battery case. Could you clarify which battery case you are referring to, or provide more details so I can assist you further?
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Battery cell lab data was used to train classifiers.;1.0;1.0;1.0;1.0
+28;What kind of data preprocessing is required before passing text to the quantum model?;"The retrieved documentation does not provide specific details about data preprocessing requirements for text before passing it to a quantum model on PlanQK. Could you clarify which quantum model or service you are referring to, or if you need general guidance for preparing text data? This will help me locate the most relevant instructions or best practices for your use case.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Text is vectorized and embedded prior to quantum input.;1.0;1.0;1.0;1.0
+29;We manage multi-stage production lines. Can quantum optimization help balance load and reduce downtime?;"Quantum optimization has significant potential for improving multi-stage production line management, specifically in balancing workloads and reducing downtime. On the PlanQK platform, you can leverage quantum and hybrid algorithms via services and workflows to address complex optimization problems such as scheduling, load balancing, and resource allocation in production environments. Service orchestration allows you to build larger solutions by integrating existing optimization services into custom workflows, enabling you to automate decision-making and optimize processes without extensive coding effort [doc10].
+
+Would you like guidance on setting up an optimization workflow, or are you interested in specific quantum algorithms for production line optimization?
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Quantum optimization minimizes scheduling gaps and improves throughput.;5.0;1.0;1.0;2.3333333333333335
+30;We operate a fleet of delivery vehicles. Can quantum optimization reduce total travel time and fuel consumption?;"Quantum optimization has the potential to reduce total travel time and fuel consumption for fleets such as delivery vehicles by efficiently solving complex routing and scheduling problems. On PlanQK, you can leverage quantum services and algorithms that are designed for optimization tasks. To get started, you would typically:
+
+- Create or subscribe to a quantum optimization service via the PLANQK Marketplace or internal publishing.
+- Use input parameters relevant to your vehicle fleet (e.g., routes, time windows, fuel costs) when executing the service.
+- Integrate the results into your operational workflow, potentially via the workflow orchestration feature, which allows you to build larger services from existing ones and use service outputs as inputs for subsequent calls, streamlining the optimization process for real-world applications [doc8].
+- Download and review job results through the Quantum Jobs page, enabling you to analyze the impact on travel time and fuel consumption [doc2].
+
+Would you like assistance with setting up an optimization workflow, connecting your data, or selecting an appropriate quantum algorithm on PlanQK?
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Quantum optimization is applied to last-mile delivery routing problems.;5.0;1.0;1.0;2.3333333333333335
+31;Can quantum anomaly detection help us monitor real-time production data for early defect detection?;"Based on the retrieved context, there is no specific information provided about quantum anomaly detection or its application for monitoring real-time production data for early defect detection on the PlanQK platform. If you are interested in quantum algorithms, use cases, or implementations for anomaly detection, could you specify:
+
+- Are you looking for existing algorithms or services on PlanQK related to anomaly detection?
+- What type of production data are you working with (e.g., time-series, images, sensor data)?
+- Are you interested in tutorials or community discussions about quantum anomaly detection?
+
+Let me know your requirements so I can assist you in finding relevant resources or services on PlanQK.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Quantum ML is used to detect anomalies in sensor-based manufacturing data.;2.0;1.0;1.0;1.3333333333333333
+32;What quantum algorithm is applied to detect anomalies in machine data?;"I'm sorry, but the retrieved information does not specify which quantum algorithm is used for anomaly detection in machine data. If you have a particular algorithm or use case in mind, could you provide more details or clarify your request? This will help me assist you more effectively using PlanQK resources.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Quantum-enhanced SVM with quantum kernels.;1.0;1.0;1.0;1.0
+33;Can the quantum model handle custom constraints like vacation days and role qualifications?;"Based on the available documentation, there is no specific information about quantum models directly supporting custom constraints such as vacation days and role qualifications. The documentation covers features like creating algorithms, managing quantum jobs, and building custom services using Docker containers, but does not detail handling domain-specific constraints within quantum models.
+
+To provide a more tailored answer, could you specify:
+- Which quantum model or service on PlanQK you are referring to?
+- Are you looking to customize an existing algorithm, or do you intend to build a new solution?
+
+This information will help guide you to the relevant documentation or functionalities on PlanQK.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Custom constraints are encoded in the QUBO problem.;2.0;1.0;1.0;1.3333333333333333
+34;What kind of model is used to classify cancerous cells in this use case?;"I'm sorry, but the retrieved documents do not provide any information about a model used to classify cancerous cells in a use case on PlanQK. Could you specify the name or details of the use case you are referring to? This will help me locate the relevant information for you.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";VQC applied to image classification tasks in cancer detection.;1.0;1.0;1.0;1.0
+35;We want to reduce hospital readmission rates. Can quantum machine learning help us identify high-risk patients?;"Thanks for your question. PlanQK enables the creation and hosting of interactive web interfaces for quantum and machine learning use cases, including those in healthcare analytics, by allowing you to deploy custom demos and services that can incorporate quantum machine learning models. You can connect your GitHub or GitLab repository to deploy solutions, such as predictive models for identifying high-risk patients, leveraging both quantum and classical techniques. This approach could be applicable for hospital readmission risk analysis if you have relevant patient data and suitable algorithms, though you may need to develop or adapt specific quantum machine learning models for your scenario. Starter templates and Docker-based deployments are available to accelerate your development and integration process on PlanQK [doc1][doc2].
+
+Would you like guidance on setting up a workspace, connecting your data, or deploying a quantum machine learning demo on PlanQK?
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Quantum ML models predict hospital readmission likelihood.;3.0;1.0;0.0;1.3333333333333333
+36;We manage a portfolio of smart buildings. Can quantum computing help optimize heating and cooling schedules to reduce energy consumption?;"Quantum computing can potentially help optimize heating and cooling schedules to reduce energy consumption in smart buildings. The PlanQK platform supports quantum and hybrid algorithms that are well-suited for solving complex optimization problems, such as scheduling and resource allocation, which are common in building management scenarios. You can leverage PlanQK’s quantum backends and SDKs to implement and experiment with quantum algorithms designed for energy optimization tasks. If you are looking to get started, you can explore relevant tutorials, supported quantum backends, and use the Quickstart guide to deploy and run optimization services on the platform [doc1].
+
+Would you like guidance on setting up a quantum optimization workflow or connecting your building data to PlanQK services?
+
+Is there anything else I can help you with on PlanQK?
+
+Identified persona: Business";Quantum optimization is applied to energy-efficient HVAC control in smart buildings.;5.0;1.0;1.0;2.3333333333333335
+37;Can external factors like weather forecasts or occupancy be included in the optimization?;"Based on the retrieved information, there is no specific mention of including external factors such as weather forecasts or occupancy in optimization workflows or services on PlanQK. To better assist you, could you clarify:
+
+- Which optimization use case or service are you referring to?
+- Do you want to use these external factors as input data for a specific model or workflow?
+
+With more details, I can guide you on how to structure your use case or configure relevant services on PlanQK.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";The model accepts external inputs for adaptive optimization.;2.0;1.0;1.0;1.3333333333333333
+38;What is the goal of simulating the hydrogen molecule on a quantum computer?;"I'm sorry, but the retrieved documents do not provide information regarding the goal of simulating the hydrogen molecule on a quantum computer. If you have questions about quantum job management, service orchestration, or tutorials on PlanQK, please specify so I can assist further.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Uses VQE to calculate the ground state energy of H₂.;1.0;1.0;1.0;1.0
+39;Which dataset and features are typically used in fraud detection quantum models?;"I'm sorry, but the retrieved documents do not provide specific information about the datasets or features typically used in fraud detection quantum models on the PlanQK platform. If you can clarify whether you are interested in available quantum algorithms, example use cases, or data pools related to fraud detection, I can help guide you further within PlanQK resources.
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Business";Uses anonymized transaction metadata for quantum fraud classification.;1.0;1.0;1.0;1.0
+40;What features are used to train the quantum model in the readmission prediction task?;"I'm sorry, but there is no information in the retrieved context regarding the features used to train the quantum model for the readmission prediction task. Could you clarify if you are referring to a specific PlanQK service or provide more details about the model or service you are interested in?
+
+Is there anything else I can help you with on PlanQK?
+Identified persona: Technical";Structured patient data is used as model input.;1.0;1.0;1.0;1.0

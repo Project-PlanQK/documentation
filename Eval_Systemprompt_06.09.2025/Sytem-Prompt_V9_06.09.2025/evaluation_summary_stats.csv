@@ -1,0 +1,2 @@
+﻿correctness_score_mean;correctness_score_std;correctness_score_min;correctness_score_max;correctness_score_count;relevance_score_mean;relevance_score_std;relevance_score_min;relevance_score_max;relevance_score_count;faithfulness_score_mean;faithfulness_score_std;faithfulness_score_min;faithfulness_score_max;faithfulness_score_count;overall_average_mean;overall_average_std;overall_average_count
+4.1375;1.4366427209617245;1.0;5.0;40;1.0;0.0;1.0;1.0;40;1.0;0.0;1.0;1.0;40;2.0458333333333334;0.47888090698724156;40
