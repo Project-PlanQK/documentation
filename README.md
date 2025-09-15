@@ -1,5 +1,11 @@
 # documentation
 
+## File: 09.09.2025 - Meilensteinpräsentation.pptx
+Content:
+1. Final: Technical status of the system incl. implemented optimizations
+2. Live Demo of features
+3. Outlook: Getting user feedback from Kipu Quantum
+
 ## File: 21.07.2025 - Meilensteinpräsentation.pptx
 Content:
 1. Tracing
