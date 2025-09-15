@@ -1,4 +1,4 @@
-# documentation
+# Documentation
 
 ## File: 09.09.2025 - Meilensteinpräsentation.pptx
 Content:
