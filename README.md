@@ -1,5 +1,11 @@
 # Documentation
 
+## File: 30.09.2025-Finale_Präsentation.pptx
+Content:
+1. Final: Technical status of the system incl. implemented optimizations
+2. Live Demo of features (via a video)
+3. Outlook: What’s possible beyond our RAG approach — a short introduction to an AI agentic approach
+
 ## File: 09.09.2025 - Meilensteinpräsentation.pptx
 Content:
 1. Final: Technical status of the system incl. implemented optimizations
